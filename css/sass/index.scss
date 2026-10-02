@@ -1,0 +1,197 @@
+@use "./abstracts/" as *;
+
+body {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#1e528e), color-stop(50%, #728a7c), to(#e9ce5d));
+    background-image: linear-gradient(to bottom, #1e528e 0%, #728a7c 50%, #e9ce5d 100%);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.success {
+    background: #52c234;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #061700, #52c234);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #061700, #52c234);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.gameOver {
+    background: #200122;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #6f0000, #200122);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #6f0000, #200122);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+#Game {
+    #ChickensContainer {
+        position: relative;
+        margin: 20px 0px;
+        width: 100%;
+        height: 150px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transform: translateY(-100%);
+            width: 100%;
+            height: 30px;
+            background-color: #333;
+
+            @include responsive(350) {
+                bottom: 40px;
+            }
+
+            @include responsive(850) {
+                bottom: 20px;
+            }
+        }
+
+        .chicken {
+            @include position();
+            transform: translateX(-50%);
+
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    left:#{$i  * 25%};
+                }
+            }
+
+            img {
+                position: relative;
+                width: 120px;
+                z-index: 2;
+
+                @include responsive(350) {
+                    width: 70px;
+                }
+
+                @include responsive(850) {
+                    width: 100px;
+                }
+            }
+
+            i {
+                @include position($t : 50%, $l : 50%);
+                transform: translate(-50%, -50%);
+            }
+        }
+
+    }
+
+    #GamePopup {
+        @include position($t : 0%, $l : 0%, $z : 1000);
+        @include distance(100%, 100%);
+        background-color: rgba(0, 0, 0, 0.5);
+
+        .popup-content {
+            @include position($t : 50%, $l : 50%);
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: #fff;
+            width: 280px;
+            padding: 20px 0px;
+            border-radius: 10px;
+
+            h2 {
+                font-size: 30px;
+                color: #fff;
+            }
+
+            p {
+                @include flex();
+                gap: 5px;
+                font-size: 18px;
+                color: #fff;
+
+                span {
+                    @include flex();
+                    color: #fff;
+                    background-color: #000;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    #Basket {
+        @include position($b : 20%, $l : 0%, $z : 2);
+        width: fit-content;
+
+        img {
+            width: 180px;
+
+            @include responsive(350) {
+                width: 100px;
+            }
+
+            @include responsive(850) {
+                width: 130px;
+            }
+        }
+
+        span {
+            @include position($t : 80%, $l : 50%);
+            transform: translate(-50%, -50%);
+            color: #fff;
+            background-color: #000;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            border-radius: 50%;
+            @include flex();
+            font-weight: bold;
+
+            @include responsive(350) {
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+            }
+        }
+    }
+
+    #BrokenEggContainer {
+        @include position($b : -25px, $l : 0%, $z : 3);
+        width: 100%;
+        height: 150px;
+
+        .brokenEgg {
+            @include position();
+            transform: translateX(-50%);
+            display: none;
+
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    left:#{$i  * 25%};
+                }
+            }
+
+            img {
+                width: 90px;
+
+                @include responsive(350) {
+                    width: 50px;
+                }
+
+                @include responsive(850) {
+                    width: 70px;
+                }
+            }
+        }
+
+    }
+
+    footer {
+        @include position($b : 0%, $l : 0%);
+        @include distance(100%, auto);
+    }
+}

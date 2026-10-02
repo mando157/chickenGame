@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- *------ SEO ------* -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta property="og:title" content="Chicken">
+    <meta property="og:image" content="https://mando157.github.io/chickenGame/images/hen-right.png" />
+    <meta property="og:url" content="https://mando157.github.io/chickenGame/" />
+
+    <link rel="icon" href="./images/hen-right.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Chicken</title>
+</head>
+
+<body>
+
+    <section id="Game">
+        <nav class="text-center py-2 bg-warning">
+            <h5 class="text-black mx-2">
+                Score : <span class="score">0</span>
+                |
+                <span id="LifeScoreText">Life Score</span> : <span id="LifeScore">5</span>
+                |
+                Highest Score : <span class="highestScore">0</span>
+                |
+                Use mouse to control
+            </h5>
+        </nav>
+
+        <div id="ChickensContainer">
+            <div class="chicken">
+                <img src="./images/hen-right.png" alt="hen">
+                <i class="fa-solid fa-egg text-light egg"></i>
+            </div>
+            <div class="chicken">
+                <img src="./images/hen-right.png" alt="hen">
+                <i class="fa-solid fa-egg text-light egg"></i>
+            </div>
+            <div class="chicken">
+                <img src="./images/hen-right.png" alt="hen">
+                <i class="fa-solid fa-egg text-light egg"></i>
+            </div>
+        </div>
+
+        <div id="GamePopup" class="popup">
+            <div class="popup-content success">
+                <h2>Start Game</h2>
+                <p>Your score: <span class="score">0</span></p>
+                <p>Highest Score : <span class="highestScore">0</span></p>
+                <button id="RestartButton" class="btn btn-success">Start Game</button>
+            </div>
+        </div>
+
+        <div id="Basket">
+            <span class="score">0</span>
+            <img src="./images/basket2.png" alt="basket">
+        </div>
+
+        <div id="BrokenEggContainer">
+            <div class="brokenEgg">
+                <img src="./images/brokenEgg.png" alt="brokenEgg">
+            </div>
+            <div class="brokenEgg">
+                <img src="./images/brokenEgg.png" alt="brokenEgg">
+            </div>
+            <div class="brokenEgg">
+                <img src="./images/brokenEgg.png" alt="brokenEgg">
+            </div>
+        </div>
+
+        <footer>
+            <img src="./images/Easter-Eggs.png" class="img-fluid" alt="Easter-Eggs">
+        </footer>
+
+    </section>
+
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/functions.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
