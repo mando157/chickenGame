@@ -136,8 +136,8 @@ function collision(egg, basket) {
 
 // * Chicken Sound
 let
-    chicken = new Audio("../audio/chicken-laying.mp3"),
-    chicken2 = new Audio("../audio/chicken.mp3"),
+    chicken = new Audio("./audio/chicken-laying.mp3"),
+    chicken2 = new Audio("./audio/chicken.mp3"),
     toggle = true,
     chickenInterval = null;
 

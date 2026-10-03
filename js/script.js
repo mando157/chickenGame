@@ -32,11 +32,11 @@ $(window).mousemove(function (e) {
 });
 
 // * Sounds
-let backgroundMusic = new Audio("../audio/alex-morgan-game.mp3"),
-    gameOver = new Audio("../audio/game-over.mp3"),
-    brockenEgg = new Audio("../audio/broken.mp3"),
-    bonus = new Audio("../audio/bonus-earned.mp3"),
-    success = new Audio("../audio/success.mp3");
+let backgroundMusic = new Audio("./audio/alex-morgan-game.mp3"),
+    gameOver = new Audio("./audio/game-over.mp3"),
+    brockenEgg = new Audio("./audio/broken.mp3"),
+    bonus = new Audio("./audio/bonus-earned.mp3"),
+    success = new Audio("./audio/success.mp3");
 
 backgroundMusic.currentTime = 0;
 backgroundMusic.play();
@@ -46,6 +46,7 @@ $("#RestartButton").click(function () {
     $(".popup-content").slideUp(500);
     setTimeout(function () {
         $("#GamePopup").fadeOut(500, function () {
+            backgroundMusic.play();
             startGame();
         });
     }, 600);
