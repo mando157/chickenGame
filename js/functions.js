@@ -21,8 +21,14 @@ function startGame() {
                     resetEgg($eggs[0]);
                     resetEgg($eggs[1]);
                     resetEgg($eggs[2]);
-                });
 
+                    score = 0;
+                    $(".score").text(score);
+
+                    backgroundMusic.play();
+                    startChickenSound();
+
+                });
 
             $(".popup-content h2").text("Game Over");
             $(".popup-content")
@@ -38,11 +44,18 @@ function startGame() {
             localStorage.setItem("highestScore", highestScore);
 
             $(".highestScore").text(highestScore);
+
+            success.play();
+
+        } else {
+            gameOver.play();
         }
 
         LifeScore = 5;
-        score = 0;
 
+        backgroundMusic.currentTime = 0;
+        backgroundMusic.pause();
+        stopChickenSound();
     }
 }
 function moveEggs(eggs) {
@@ -70,6 +83,9 @@ function moveEggs(eggs) {
 
                 $("#LifeScore").text(--LifeScore);
             }
+
+            brockenEgg.currentTime = 0;
+            brockenEgg.play();
         }
     });
 }
@@ -85,6 +101,10 @@ function catchEgg(egg) {
         $(".score").text(++score);
         lastScore = score;
         resetEgg(egg);
+
+        if (score % 5 === 0) {
+            bonus.play();
+        }
     }
 }
 
@@ -112,4 +132,43 @@ function collision(egg, basket) {
     else {
         return true;
     }
+}
+
+// * Chicken Sound
+let
+    chicken = new Audio("../audio/chicken-laying.mp3"),
+    chicken2 = new Audio("../audio/chicken.mp3"),
+    toggle = true,
+    chickenInterval = null;
+
+function startChickenSound() {
+
+    clearInterval(chickenInterval);
+
+    toggle = true;
+
+    chickenInterval = setInterval(() => {
+
+        if (toggle) {
+            chicken.currentTime = 0;
+            chicken.play();
+        } else {
+            chicken2.currentTime = 0;
+            chicken2.play();
+        }
+
+        toggle = !toggle;
+
+    }, 3000);
+}
+
+
+function stopChickenSound() {
+
+    clearInterval(chickenInterval);
+
+    chickenInterval = null;
+
+    chicken.pause();
+    chicken2.pause();
 }
